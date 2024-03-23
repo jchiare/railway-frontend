@@ -9,7 +9,7 @@ export function useStreamMessages(url: string) {
     eventSource.onopen = () => console.log("SSE connection opened");
     eventSource.onmessage = event => {
       const newMessage: Message = JSON.parse(event.data);
-      setMessages(prevMessages => [...prevMessages, newMessage]);
+      setMessages(prevMessages => [newMessage, ...prevMessages]);
     };
 
     return () => {
