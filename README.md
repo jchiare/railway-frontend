@@ -1,6 +1,6 @@
 # Railway Frontend
 
-Display messages streamed (curently only from Discord) from a backend
+Display messages streamed (currently only from Discord) from a backend
 
 ## Installation
 
