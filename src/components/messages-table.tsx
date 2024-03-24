@@ -1,10 +1,8 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import type { Message } from "@/types";
-
-type MessagesProps = {
-  messages: Message[];
-};
+import { useStreamMessages } from "@/actions/stream-messages";
+import { BACKEND_URL } from "@/utils";
 
 function inThreadCss(state: boolean) {
   return state
@@ -19,7 +17,9 @@ function truncateSummary(summary: string | null, truncateLength = 95): string {
     : summary;
 }
 
-export function Messages({ messages }: MessagesProps) {
+export function Messages() {
+  const messages = useStreamMessages(`${BACKEND_URL}/stream-messages`);
+
   return (
     <div className="bg-gray-900 w-full py-10">
       <table className="mt-6 w-full whitespace-nowrap text-left">
@@ -35,7 +35,7 @@ export function Messages({ messages }: MessagesProps) {
             <th scope="col" className="py-2 pl-4 pr-8 font-semibold ">
               User
             </th>
-            <th scope="col" className=" py-2 pl-0 pr-8 font-semibold ">
+            <th scope="col" className="py-2 pl-0 pr-8 font-semibold ">
               Content
             </th>
             <th scope="col" className="py-2 pl-0 pr-4 font-semibold">
@@ -76,9 +76,9 @@ export function Messages({ messages }: MessagesProps) {
               <td className="py-4 pl-0 pr-4 text-sm leading-6">
                 <Link
                   target="_blank"
-                  className="text-blue-500 hover:text-blue-700"
+                  className="text-indigo-600 hover:text-indigo-900 pl-2"
                   href={message.linkToMessage}>
-                  Link
+                  Link <span className="sr-only">View Source</span>
                 </Link>
               </td>
               <td className="py-4 pl-0 pr-4 text-sm leading-6 text-center">
