@@ -1,9 +1,10 @@
 "use client";
 import { Messages } from "@/components/messages-table";
 import { useStreamMessages } from "@/actions/stream-messages";
+import { BACKEND_URL } from "@/utils";
 
 export default function DefaultPage() {
-  const messages = useStreamMessages("http://localhost:3000/stream-messages");
+  const messages = useStreamMessages(`${BACKEND_URL}/stream-messages`);
 
   console.log(messages);
 
