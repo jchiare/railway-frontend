@@ -6,4 +6,5 @@ export type Message = {
   createdAt: string;
   linkToMessage: string;
   inThread: boolean;
+  category: string;
 };

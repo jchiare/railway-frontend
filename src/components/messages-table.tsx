@@ -10,7 +10,7 @@ function inThreadCss(state: boolean) {
     : "text-rose-400 bg-rose-400/10";
 }
 
-function truncateSummary(summary: string | null, truncateLength = 95): string {
+function truncateSummary(summary: string | null, truncateLength = 75): string {
   if (!summary) return "";
   return summary.length > truncateLength
     ? `${summary.slice(0, truncateLength)}...`
@@ -25,7 +25,8 @@ export function Messages() {
       <table className="mt-6 w-full whitespace-nowrap text-left">
         <colgroup>
           <col className="w-2/12" />
-          <col className="w-7/12" />
+          <col className="w-6/12" />
+          <col className="w-1/12" />
           <col className="w-1/12" />
           <col className="w-1/12" />
           <col className="w-1/12" />
@@ -37,6 +38,9 @@ export function Messages() {
             </th>
             <th scope="col" className="py-2 pl-0 pr-8 font-semibold ">
               Content
+            </th>
+            <th scope="col" className="py-2 pl-0 pr-4 font-semibold">
+              Category
             </th>
             <th scope="col" className="py-2 pl-0 pr-4 font-semibold">
               Source
@@ -71,6 +75,11 @@ export function Messages() {
                   <div className="font-mono text-sm leading-6 text-white">
                     {truncateSummary(message.content)}
                   </div>
+                </div>
+              </td>
+              <td className="py-4 pl-0 pr-4 text-sm leading-6">
+                <div className="rounded-md bg-gray-700/40 px-2 py-1 w-fit text-xs font-medium text-gray-400 ring-1 ring-inset ring-white/10">
+                  {message.category}
                 </div>
               </td>
               <td className="py-4 pl-0 pr-4 text-sm leading-6">
