@@ -65,7 +65,7 @@ export function Messages() {
                     height={32}
                     className="h-8 w-8 rounded-full bg-gray-800"
                   />
-                  <div className="truncate text-sm font-medium leading-6 text-white">
+                  <div className="truncate text-sm font-medium leading-6 text-gray-400">
                     {message.author}
                   </div>
                 </div>
